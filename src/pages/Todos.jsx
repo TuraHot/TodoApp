@@ -32,16 +32,18 @@ const Todos = () => {
       {/* Filter */}
       <div className="d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
-            <Form.Check // prettier-ignore
+          <Form.Check // prettier-ignore
             type="switch"
             id="custom-switch"
             //   label="Show only waiting"
             onChange={(e) => setOnlyWaiting(e.target.checked)}
-            />
+          />
+          <label htmlFor="custom-switch">
             Show only&nbsp;
-            <Button variant="warning">
-                waiting&nbsp;<i className="bi bi-clock"></i>
+            <Button variant="warning" style={{pointerEvents: 'none'}}>
+              waiting&nbsp;<i className="bi bi-clock"></i>
             </Button>
+          </label>
         </div>
         <Form.Select
           aria-label="Default select example"
@@ -64,7 +66,10 @@ const Todos = () => {
               </th>
               <th className="text-center">Title</th>
               <th className="text-end" style={{ width: "12rem" }}>
-                Completed&nbsp;<Button variant="primary"><i className="bi bi-plus"></i></Button>
+                Completed&nbsp;
+                <Button variant="primary">
+                  <i className="bi bi-plus"></i>
+                </Button>
               </th>
             </tr>
           </thead>
@@ -87,7 +92,9 @@ const Todos = () => {
                       </Button>
                     )}
                     &nbsp;
-                    <Button variant="danger"><i className="bi bi-trash"></i></Button>
+                    <Button variant="danger">
+                      <i className="bi bi-trash"></i>
+                    </Button>
                   </td>
                 </tr>
               );
@@ -97,11 +104,41 @@ const Todos = () => {
       </div>
       {/* Page control */}
       <div className="text-center">
-        <Button variant="outline-primary" onClick={() => setCurrentPage(1)} disabled={currentPage <= 1}>First</Button>&nbsp;
-        <Button variant="outline-primary" onClick={() => currentPage > 1 && setCurrentPage((p => p - 1))}  disabled={currentPage <= 1}>Previous</Button>&nbsp;
-        <span>{currentPage}&nbsp;/&nbsp;{numPages}</span>&nbsp;
-        <Button variant="outline-primary" onClick={() => currentPage < numPages && setCurrentPage((p => p + 1))}  disabled={currentPage >= numPages}>Next</Button>&nbsp;
-        <Button variant="outline-primary" onClick={() => setCurrentPage(numPages)} disabled={currentPage >= numPages}>Last</Button>
+        <Button
+          variant="outline-primary"
+          onClick={() => setCurrentPage(1)}
+          disabled={currentPage <= 1}
+        >
+          First
+        </Button>
+        &nbsp;
+        <Button
+          variant="outline-primary"
+          onClick={() => currentPage > 1 && setCurrentPage((p) => p - 1)}
+          disabled={currentPage <= 1}
+        >
+          Previous
+        </Button>
+        &nbsp;
+        <span>
+          {currentPage}&nbsp;/&nbsp;{numPages}
+        </span>
+        &nbsp;
+        <Button
+          variant="outline-primary"
+          onClick={() => currentPage < numPages && setCurrentPage((p) => p + 1)}
+          disabled={currentPage >= numPages}
+        >
+          Next
+        </Button>
+        &nbsp;
+        <Button
+          variant="outline-primary"
+          onClick={() => setCurrentPage(numPages)}
+          disabled={currentPage >= numPages}
+        >
+          Last
+        </Button>
       </div>
     </div>
   );
