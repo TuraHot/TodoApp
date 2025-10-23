@@ -1,7 +1,9 @@
+import CalculatorGenerator from "../components/CalculatorGenerator.jsx";
+
 const Calculator = () => {
     return ( 
         <div>
-            <h2>Calculator Page</h2>
+            <CalculatorGenerator />
         </div>
      );
 }

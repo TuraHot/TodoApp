@@ -1,7 +1,9 @@
+import AnimationComponent from "../components/AnimationComponent";
+
 const Animation = () => {
     return ( 
         <div>
-            <h2>Animation Page</h2>
+            <AnimationComponent />
         </div>
      );
 }
