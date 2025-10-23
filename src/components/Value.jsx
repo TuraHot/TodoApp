@@ -1,7 +1,7 @@
 const Value = ({ name, type, value, setValue}) => {
   return (
     <div
-      className="border border-black border-2 rounded-4 mx-auto mt-3 p-2 bg-secondary-subtle"
+      className="border border-black border-2 rounded-4 mt-3 p-2 bg-secondary-subtle"
       style={{ width: "fit-content" }}
     >
       <h1 className="text-primary text-center">{name || "VALUE"}</h1>

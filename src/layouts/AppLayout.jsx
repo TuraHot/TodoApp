@@ -9,7 +9,9 @@ const AppLayout = () => {
     <div>
       <AppHeader />
       <AppNavbar />
-      <Outlet />
+      <div className="container my-4">
+        <Outlet />
+      </div>
       <AppFooter />
     </div>
   );

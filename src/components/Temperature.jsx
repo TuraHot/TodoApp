@@ -28,7 +28,7 @@ function Temperature({ name }) {
 
   return (
     <div
-      className="border border-black border-2 rounded-4 mx-auto p-3 mt-3"
+      className="border border-black border-2 rounded-4 p-3 mt-3"
       style={{ width: "fit-content" }}
     >
       <h1 className="text-center text-primary">{name || "TEMPERATURE"}</h1>

@@ -83,7 +83,7 @@ const Todos = () => {
                   <td>{todo.title}</td>
                   <td className="text-end">
                     {todo.completed ? (
-                      <Badge bg="success">
+                      <Badge bg="success" className="align-content-center fs-6 fw-normal" style={{width: "6rem", height: "2.25rem"}}>
                         done&nbsp;<i className="bi bi-check"></i>
                       </Badge>
                     ) : (

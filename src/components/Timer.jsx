@@ -40,14 +40,14 @@ function Timer({ name }) {
 
   return (
     <div
-      className="border border-black border-2 rounded-4 mx-auto mt-3 p-2 bg-secondary-subtle"
+      className="border border-black border-2 rounded-4 mt-3 p-2 bg-secondary-subtle"
       style={{ width: "fit-content" }}
     >
       <h1 className="text-primary text-center ">{name || "TIMER"}</h1>
       <div className="border border-black border-2 rounded-3 text-end px-2 fs-4 bg-white">
         {convertTime(sec)}
       </div>
-      <div className="d-flex justify-content-between gap-3 mt-3">
+      <div className="d-flex justify-content-start gap-3 mt-3">
         <button className="btn btn-danger" onClick={resetTime}>
           <i className="bi bi-arrow-counterclockwise" />
           &nbsp;Reset
