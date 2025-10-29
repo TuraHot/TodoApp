@@ -2,9 +2,9 @@ import { useState } from "react";
 import Value from "./Value";
 
 function Temperature({ name }) {
-  const [celsius, setCelsius] = useState(0);
-  const [fahrenheit, setFahrenheit] = useState(32);
-  const [kelvin, setKelvin] = useState(273.15);
+  const [celsius, setCelsius] = useState(25);
+  const [fahrenheit, setFahrenheit] = useState(77);
+  const [kelvin, setKelvin] = useState(298.15);
 
   const updateFromCelsius = (c) => {
     setCelsius(c);
