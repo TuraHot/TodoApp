@@ -7,9 +7,9 @@ const Todos = () => {
   const [todosRaw, setTodosRaw] = useState([]);
   const [todos, setTodos] = useState([]);
   const [onlyWaiting, setOnlyWaiting] = useState(false);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [numPages, setNumPages] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [numPages, setNumPages] = useState(0);
 
   const newIdRef = useRef();
   const newTitleRef = useRef();
@@ -17,6 +17,8 @@ const Todos = () => {
   //fetch todos raw
   useEffect(() => {
     setTodosRaw(fetchTodos());
+    setCurrentPage(1);
+    setItemsPerPage(5);
   }, []);
 
   //filter onlywaiting
@@ -82,27 +84,35 @@ const Todos = () => {
       {/* Modal Begin */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Todo</Modal.Title>
+          <Modal.Title>
+            <Button variant="primary" style={{ pointerEvents: "none" }}>
+              <i className="bi bi-plus"></i>
+            </Button>
+            &nbsp;Add Todo
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>ID:</Form.Label>
-              <Form.Control
-                value={
-                  todosRaw.reduce(
-                    (prev, todo) => (todo.id > prev ? todo.id : prev),
-                    -1
-                  ) + 1
-                }
-                disabled
-                ref={newIdRef}
-              />
+            <Form.Group className="mb-3 d-flex align-content-center" controlId="exampleForm.ControlInput1">
+              <Form.Label className="me-2">ID:</Form.Label>
+              <Badge bg="secondary" className="rounded-3" style={{width: '2.75rem', fontSize: '0.025rem'}}>
+                <Form.Control
+                  value={
+                    todosRaw.reduce(
+                      (prev, todo) => (todo.id > prev ? todo.id : prev),
+                      -1
+                    ) + 1
+                  }
+                  disabled
+                  ref={newIdRef}
+                  className="border-0 bg-transparent shadow-none text-white fw-bold"
+                />
+              </Badge>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Title:</Form.Label>
               <Form.Control
-                placeholder="ใส่ todo ใหม่ตรงนี้"
+                placeholder="typing your todo title here..."
                 autoFocus
                 ref={newTitleRef}
               />
@@ -116,7 +126,10 @@ const Todos = () => {
           <Button
             variant="primary"
             onClick={() =>
-              saveClicked(Number(newIdRef.current.value), newTitleRef.current.value)
+              saveClicked(
+                Number(newIdRef.current.value),
+                newTitleRef.current.value
+              )
             }
           >
             Save
