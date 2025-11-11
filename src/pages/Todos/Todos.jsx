@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { Form, Table, Badge, Button, Modal } from "react-bootstrap";
 
-import { fetchTodos } from "../data/todos";
+import { fetchTodos } from "../../data/todos.jsx";
+import "./Todos.css";
 
 const Todos = () => {
   const [todosRaw, setTodosRaw] = useState([]);
@@ -80,7 +81,7 @@ const Todos = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <div>
+    <div className="todos-container">
       {/* Modal Begin */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
